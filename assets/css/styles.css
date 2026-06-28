@@ -1,0 +1,1773 @@
+:root {
+    --color-fondo-pagina: #ffffff;
+    --color-fondo-oscuro: #212129;
+    --color-fondo-header: #ffffff;
+    --color-fondo-footer: #212129;
+    --color-fondo-topbar: #212129;
+    --color-fondo-tarjeta: #ffffff;
+
+    --color-calido: #FF5351;
+    --color-calido-oscuro: #cc3f3e;
+
+    --color-texto-oscuro: #212129;
+    --color-texto-medio: #454545;
+    --color-texto-claro: #ffffff;
+    --color-texto-gris: #888888;
+    --color-texto-sobre-oscuro: #cccccc;
+
+    --color-borde: #e0e0e0;
+    --color-borde-oscuro: #3a3a45;
+
+    --color-oro: #b8860b;
+    --color-plata: #708090;
+    --color-bronce: #8b4513;
+
+    --fuente-titulos: 'Poppins', Arial, sans-serif;
+    --fuente-cuerpo: 'Open Sans', Arial, sans-serif;
+    --fuente-tabla: 'Open Sans', Arial, sans-serif;
+
+    --borde-radio: 20px;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* Clases de utilidad generales */
+
+/* Pequeño espaciado*/
+.padding-xs {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+/* Espaciado amplio para secciones grandes */
+.padding-xl {
+    padding-top: 90px;
+    padding-bottom: 90px;
+}
+
+/* Imágenes que se adaptan al ancho del contenedor */
+.img-fluid {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Videos con aspecto 16:9 que se adaptan al ancho */
+.video-fluid {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+}
+
+/* Contenedor centrado */
+.container {
+    max-width: 70%;
+    margin: 0 auto;
+}
+
+/* Animación suave que hace flotar el logo */
+@keyframes floating {
+    0%, 100% { transform: translateY(0px); }
+    50%       { transform: translateY(-3px); }
+}
+
+/* Scroll suave cuando el usuario hace clic en un enlace de ancla */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Estilos base del documento */
+body {
+    background-color: var(--color-fondo-pagina);
+    color: var(--color-texto-medio);
+    font-family: var(--fuente-cuerpo);
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+/* Todos los títulos comparten la misma fuente y altura de línea */
+h1, h2, h3, h4 {
+    font-family: var(--fuente-titulos);
+    line-height: 1.2;
+}
+
+/* Los enlaces no tienen subrayado y heredan el color de su contenedor */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+/* HEADER */
+
+/* El header se queda pegado arriba aunque se haga scroll */
+#header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    background-color: var(--color-fondo-header);
+}
+
+/* Topbar: franja oscura con el teléfono, correo y redes */
+.topbar {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    padding: 10px 40px;
+    background-color: var(--color-fondo-topbar);
+    color: var(--color-texto-claro);
+    font-size: 13px;
+}
+
+/* Grupos del topbar en fila */
+.topbar-social,
+.topbar-contact {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+/* Los enlaces del topbar heredan el color blanco */
+.topbar-social a,
+.topbar-contact a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: inherit;
+}
+
+/* Los íconos de redes sociales del topbar tienen tamaño fijo */
+.topbar-social img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+
+/* El ícono de teléfono y correo se pinta con el color principal */
+.topbar-contact i {
+    font-size: 14px;
+    color: var(--color-calido);
+}
+
+/* Hover en los enlaces del topbar */
+.topbar-contact a:hover,
+.topbar-social a:hover {
+    color: var(--color-calido);
+}
+
+/* En pantallas pequeñas el topbar se apila en columna */
+@media (max-width: 900px) {
+    .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 12px 20px;
+    }
+
+    .topbar-social,
+    .topbar-contact {
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+}
+
+/* Barra de navegación: logo a la izquierda, menú a la derecha */
+.contenedor-header {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+/* El logo agrupa la imagen y el texto en fila */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Tamaño fijo para la imagen del logo */
+.logo img {
+    width: 44px;
+    height: 44px;
+    object-fit: contain;
+}
+
+/* La abreviatura y el subtítulo se apilan en columna */
+.logo-texto {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+}
+
+/* "FDNDA" en rojo y letras espaciadas */
+.logo-nombre {
+    font-family: var(--fuente-titulos);
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--color-calido);
+    letter-spacing: 3px;
+}
+
+/* Nombre completo de la federación en gris pequeño */
+.logo-subtitulo {
+    font-size: 10px;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+    color: var(--color-texto-gris);
+    white-space: nowrap;
+}
+
+/* Los enlaces del menú van en fila */
+nav.nav-principal {
+    display: flex;
+    gap: 5px;
+}
+
+/* Cada enlace del menú: pequeño, en mayúsculas y oscuro */
+nav.nav-principal a {
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--color-texto-oscuro);
+    font-weight: 500;
+}
+
+/* Color activo/hover para el enlace de la página actual */
+nav.nav-principal a:hover,
+nav.nav-principal a.nav-menu-link-active {
+    color: var(--color-calido);
+}
+
+/* El botón hamburguesa solo aparece en móvil*/
+.menu-toggle {
+    display: none;
+    width: 48px;
+    height: 48px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px;
+    border-radius: 8px;
+}
+
+/* Texto oculto para lectores de pantalla */
+.menu-toggle .sr-only {
+    position: absolute !important;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Barras del icono hamburguesa */
+.menu-toggle .bar {
+    display: block;
+    width: 22px;
+    height: 3px;
+    background-color: var(--color-texto-oscuro);
+    border-radius: 999px;
+    transition: transform 0.28s ease, opacity 0.18s ease, background-color 0.2s ease;
+    margin: 4px 0;
+}
+
+/* Indicador de foco accesible */
+.menu-toggle:focus-visible {
+    outline: 2px solid var(--color-calido);
+    outline-offset: 4px;
+}
+
+/* Transformación cuando está activo */
+.menu-toggle.activo .bar:nth-child(2) {
+    transform: translateY(6px) rotate(45deg);
+}
+.menu-toggle.activo .bar:nth-child(3) {
+    opacity: 0;
+    transform: scaleX(0);
+}
+.menu-toggle.activo .bar:nth-child(4) {
+    transform: translateY(-6px) rotate(-45deg);
+}
+
+/* Comportamiento responsivo del menú en pantallas pequeñas */
+@media (max-width: 900px) {
+    .contenedor-header {
+        padding: 0 20px;
+    }
+
+    /* Mostramos el botón hamburguesa */
+    .menu-toggle {
+        display: flex;
+    }
+
+    /* El menú se oculta y se despliega con la clase "activo" */
+    nav.nav-principal {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: var(--color-fondo-header);
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+        padding: 18px 0;
+        max-height: 0;
+        overflow: hidden;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    nav.nav-principal.activo {
+        max-height: 380px;
+    }
+
+    nav.nav-principal a {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+}
+
+
+/* BANNER PRINCIPAL */
+
+/* Pantalla completa con imagen de fondo y degradado oscuro hacia la derecha */
+.banner-principal {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    background-image: linear-gradient(
+        to right,
+        rgba(33, 33, 41, 0.88) 40%,
+        rgba(33, 33, 41, 0.50) 100%
+    ), url('../img/background.jpg');
+    background-size: cover;
+    background-position: center;
+    transition: background-size 0.5s ease-in-out;
+}
+
+/* Texto del banner con espacio superior para no quedar debajo del header */
+.banner-contenido {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 140px 40px 100px;
+}
+
+/* Etiqueta pequeña sobre el título principal */
+.banner-etiqueta {
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--color-calido);
+    margin-bottom: 20px;
+}
+
+/* Título enorme del banner */
+.banner-titulo {
+    font-size: 90px;
+    font-weight: 700;
+    color: var(--color-texto-claro);
+    margin-bottom: 24px;
+}
+
+/* La palabra en cursiva del título se pinta de rojo */
+.banner-titulo em {
+    font-style: italic;
+    color: var(--color-calido);
+    display: block;
+}
+
+/* Descripción corta debajo del título */
+.banner-descripcion {
+    font-size: 17px;
+    color: var(--color-texto-claro);
+    max-width: 500px;
+    line-height: 1.8;
+}
+
+
+/* SECCIONES */
+
+/* Espaciado vertical estándar para cada sección */
+.seccion {
+    padding: 90px 0;
+}
+
+/* Las secciones oscuras tienen fondo casi negro */
+.seccion-oscura {
+    background-color: var(--color-fondo-oscuro);
+}
+
+/* Contenido de la sección de Nosotros */
+.historia-contenido {
+    background-color: rgba(255, 255, 255, 0.98);
+    border: 1px solid rgba(33, 33, 41, 0.08);
+    border-radius: 30px;
+    padding: 42px 44px;
+    box-shadow: 0 28px 60px rgba(33, 33, 41, 0.08);
+    margin-top: 32px;
+}
+
+.historia-contenido::before {
+    content: 'Nuestra trayectoria';
+    display: inline-block;
+    margin-bottom: 26px;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--color-calido);
+}
+
+.historia-contenido p {
+    margin-bottom: 22px;
+    font-size: 17px;
+    line-height: 1.95;
+    color: var(--color-texto-oscuro);
+}
+
+.historia-contenido p:last-child {
+    margin-bottom: 0;
+}
+
+/* Contenedor centrado para el contenido de cada sección */
+.contenedor {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+/* Títulos en secciones */
+.seccion h2 {
+    font-size: 46px;
+    color: var(--color-texto-oscuro);
+    font-weight: 700;
+    margin-bottom: 36px;
+}
+
+/* Títulos en secciones oscuras */
+.seccion-oscura h2 {
+    color: var(--color-texto-claro);
+}
+
+/* El párrafo introductorio de las secciones oscuras usa gris claro */
+.seccion-oscura .seccion-intro {
+    color: var(--color-texto-sobre-oscuro);
+}
+
+/* Párrafo introductorio de sección */
+.seccion-intro {
+    font-size: 16px;
+    color: var(--color-texto-medio);
+    max-width: 1200px;
+    margin-bottom: 36px;
+}
+
+
+/* SECCION QUIENES SOMOS */
+
+/* Dos columnas: texto a la izquierda, estadísticas a la derecha */
+.grilla-nosotros {
+    display: flex;
+    gap: 60px;
+    align-items: start;
+}
+
+.texto-nosotros {
+    flex: 1;
+}
+
+/* Párrafos del bloque descriptivo */
+.texto-nosotros p {
+    color: var(--color-texto-medio);
+    margin-bottom: 16px;
+    font-size: 16px;
+}
+
+/* El nombre de la federación en negrita se pinta de rojo */
+.texto-nosotros strong {
+    color: var(--color-calido);
+    font-weight: 600;
+}
+
+/* Cuadrícula de 2×2 para las cuatro estadísticas */
+.grilla-estadisticas {
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+/* Cada tarjeta de estadística ocupa la mitad del ancho */
+.tarjeta-estadistica {
+    flex: 1 1 calc(50% - 8px);
+    background-color: var(--color-fondo-tarjeta);
+    border: 1px solid var(--color-borde);
+    border-left: 4px solid var(--color-calido);
+    border-radius: var(--borde-radio);
+    padding: 24px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+/* El número grande de cada estadística */
+.estadistica-numero {
+    font-family: var(--fuente-titulos);
+    font-size: 40px;
+    font-weight: 700;
+    color: var(--color-calido);
+    line-height: 1;
+}
+
+/* La descripción debajo del número */
+.estadistica-etiqueta {
+    font-size: 13px;
+    color: var(--color-texto-gris);
+}
+
+
+/* SECCION VISIÓN Y MISIÓN */
+
+/* Dos columnas para las tarjetas de visión y misión */
+.grilla-vision {
+    display: flex;
+    gap: 24px;
+}
+
+/* Tarjeta con borde superior rojo sobre fondo oscuro */
+.tarjeta-vision {
+    flex: 1;
+    background-color: #2c2c36;
+    border: 1px solid var(--color-borde-oscuro);
+    border-top: 4px solid var(--color-calido);
+    border-radius: var(--borde-radio);
+    padding: 32px;
+}
+
+/* Título de la tarjeta en blanco */
+.tarjeta-vision h3 {
+    font-size: 26px;
+    color: var(--color-texto-claro);
+    margin-bottom: 12px;
+}
+
+/* Texto de la tarjeta en gris claro */
+.tarjeta-vision p {
+    color: var(--color-texto-sobre-oscuro);
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+
+/* SECCION MODALIDADES */
+
+/* Cuatro columnas en fila para las modalidades */
+.grilla-modalidades {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.servicios-grupo {
+    margin-top: 24px;
+}
+
+/* Tarjeta de modalidad con fondo blanco y borde */
+.tarjeta-modalidad {
+    flex: 1;
+    background-color: var(--color-fondo-tarjeta);
+    border: 1px solid var(--color-borde);
+    border-radius: var(--borde-radio);
+    padding: 28px 22px;
+}
+
+/* Nombre de la modalidad en negrita */
+.tarjeta-modalidad h4 {
+    font-size: 22px;
+    color: var(--color-texto-oscuro);
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+/* Descripción corta de la modalidad */
+.tarjeta-modalidad p {
+    font-size: 14px;
+    color: var(--color-texto-medio);
+    line-height: 1.7;
+}
+
+
+/* SECCIÓN GALERÍA */
+
+/* Contenedor principal de la galería en fila */
+.galeria-flex {
+    display: flex;
+    gap: 12px;
+    height: 420px;
+}
+
+/* Cada ítem de galería tiene overflow oculto y el overlay posicionado encima */
+.galeria-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 16px;
+    flex: 1;
+}
+
+/* La imagen grande ocupa más espacio horizontal */
+.galeria-item--grande {
+    flex: 2;
+}
+
+/* La imagen vertical comparte el espacio igualado */
+.galeria-item--vertical {
+    flex: 1;
+}
+
+/* Columna central con dos fotos apiladas */
+.galeria-columna {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex: 1;
+}
+
+.galeria-columna .galeria-item {
+    flex: 1;
+}
+
+/* Las fotos de la galería cubren todo el espacio de su celda */
+.galeria-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+/* Al pasar el mouse la foto se agranda sutilmente */
+.galeria-item:hover img {
+    transform: scale(1.05);
+}
+
+/* Overlay oscuro que aparece al hacer hover */
+.galeria-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(33, 33, 41, 0.55);
+    display: flex;
+    align-items: flex-end;
+    padding: 18px;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.galeria-item:hover .galeria-overlay {
+    opacity: 1;
+}
+
+/* Nombre del atleta sobre el overlay */
+.galeria-overlay span {
+    color: var(--color-texto-claro);
+    font-family: var(--fuente-titulos);
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+
+/* SECCIÓN EQUIPO */
+
+/* Cuatro columnas para las tarjetas de atletas */
+.grilla-equipo {
+    display: flex;
+    gap: 20px;
+}
+
+/* Tarjeta de atleta con fondo oscuro y foto arriba */
+.tarjeta-atleta {
+    flex: 1;
+    background-color: #2c2c36;
+    border: 1px solid var(--color-borde-oscuro);
+    border-radius: var(--borde-radio);
+    overflow: hidden;
+}
+
+/* Foto de la atleta con ancho completo, altura fija, centrada arriba */
+.tarjeta-atleta img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    object-position: top;
+    display: block;
+}
+
+/* Bloque de texto debajo de la foto */
+.atleta-info {
+    padding: 16px 18px;
+}
+
+/* Nombre de la atleta en blanco */
+.atleta-info h4 {
+    font-family: var(--fuente-titulos);
+    font-size: 20px;
+    color: var(--color-texto-claro);
+    margin-bottom: 4px;
+}
+
+/* Modalidades en rojo y negrita */
+.atleta-info span {
+    font-size: 12px;
+    color: var(--color-calido);
+    font-weight: 600;
+    display: block;
+    margin-bottom: 8px;
+}
+
+/* Descripción corta de la atleta en gris */
+.atleta-info p {
+    font-size: 13px;
+    color: var(--color-texto-sobre-oscuro);
+    line-height: 1.6;
+}
+
+
+/* SECCIÓN VIDEO */
+
+/* Limita el ancho del video para que no se estire */
+.contenedor-video {
+    width: 100%;
+    max-width: 1200px;
+}
+
+/* El video ocupa todo el ancho con bordes redondeados */
+.contenedor-video video {
+    width: 100%;
+    border-radius: var(--borde-radio);
+}
+
+
+/* TABLA DE RESULTADOS */
+
+/* Subtítulo antes de cada tabla */
+.tabla-subtitulo {
+    font-family: var(--fuente-tabla);
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--color-texto-claro);
+    margin-bottom: 12px;
+    margin-top: 40px;
+}
+
+/* La tabla ocupa todo el ancho disponible */
+.contenedor-tabla table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--fuente-tabla);
+    font-size: 14px;
+    color: var(--color-texto-claro);
+}
+
+/* Encabezado de tabla con fondo oscuro */
+.contenedor-tabla thead tr {
+    background-color: #2c2c36;
+}
+
+/* Celdas del encabezado en blanco */
+.contenedor-tabla th {
+    padding: 11px 14px;
+    text-align: left;
+    color: var(--color-texto-claro);
+    font-weight: 600;
+    font-size: 13px;
+    border-bottom: 2px solid var(--color-borde-oscuro);
+}
+
+/* Celdas de datos */
+.contenedor-tabla td {
+    padding: 10px 14px;
+    color: #f5f5f5;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* Filas alternadas para mayor legibilidad */
+.contenedor-tabla tbody tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.03);
+}
+
+/* Colores según el puesto obtenido */
+.resultado-oro          { color: #ffd166; font-weight: 600; }
+.resultado-plata        { color: #cbd5e1; font-weight: 600; }
+.resultado-bronce       { color: #d4a373; font-weight: 600; }
+.resultado-participacion{ color: #bdbdbd; }
+
+
+/* FORMULARIO */
+
+/* El formulario está centrado y tiene un ancho máximo cómodo */
+.formulario-contacto {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* Cada grupo tiene su label e input en columna */
+.grupo-formulario {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Labels del formulario en mayúsculas y negrita */
+.grupo-formulario label {
+    font-family: var(--fuente-titulos);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-texto-oscuro);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Estilo compartido para todos los campos de texto y textarea */
+.grupo-formulario input:not([type="checkbox"]),
+.grupo-formulario textarea {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid var(--color-borde);
+    border-radius: 8px;
+    font-family: var(--fuente-cuerpo);
+    font-size: 15px;
+    color: var(--color-texto-oscuro);
+    background-color: var(--color-fondo-tarjeta);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.grupo-formulario input:not([type="checkbox"]):focus,
+.grupo-formulario textarea:focus {
+    outline: none;
+    border-color: var(--color-calido);
+    box-shadow: 0 0 0 3px rgba(255, 83, 81, 0.15);
+}
+
+/* Placeholder en gris suave */
+.grupo-formulario input::placeholder,
+.grupo-formulario textarea::placeholder {
+    color: var(--color-texto-gris);
+}
+
+/* El textarea puede crecer verticalmente * /
+.grupo-formulario textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* Botón de envío en rojo */
+.boton-enviar {
+    padding: 14px 32px;
+    background-color: var(--color-calido);
+    color: var(--color-texto-claro);
+    border: none;
+    border-radius: 8px;
+    font-family: var(--fuente-titulos);
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    align-self: flex-start;
+    margin-top: 8px;
+    transition: all 0.4s ease-in-out;
+}
+
+/* El botón se oscurece al pasar el mouse */
+.boton-enviar:hover {
+    background-color: var(--color-calido-oscuro);
+    box-shadow: 0 4px 12px rgba(255, 83, 81, 0.3);
+}
+
+/* El enlace de los términos y condiciones en azul */
+.checkbox-label a {
+    color: #0088cc;
+    text-decoration: underline;
+}
+
+.checkbox-label a:hover {
+    color: #0066aa;
+}
+
+
+/* FOOTER */
+
+/* Footer con fondo oscuro y buen espaciado vertical */
+#contacto {
+    background-color: var(--color-fondo-footer);
+    padding: 44px 0;
+}
+
+/* El contenido del footer se centra en columna */
+.contenedor-footer {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    text-align: center;
+}
+
+/* Logo y nombre de la federación en fila */
+.footer-marca {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--fuente-titulos);
+    font-size: 18px;
+    color: var(--color-texto-claro);
+}
+
+/* Imagen del logo en el footer */
+.footer-marca img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+}
+
+/* Bloque de dirección física */
+.footer-sede {
+    text-align: center;
+}
+
+/* "Sede Principal" en rojo y mayúsculas */
+.footer-sede-titulo {
+    font-family: var(--fuente-titulos);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-calido);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+}
+
+/* Dirección y ciudad en gris */
+.footer-sede p {
+    font-size: 13px;
+    color: var(--color-texto-gris);
+    line-height: 1.6;
+}
+
+/* Íconos de redes en fila centrada */
+.footer-redes {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Cada ícono de red social dentro de un círculo semitransparente */
+.footer-redes a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(216, 22, 19, 0.56);
+    border-radius: 50%;
+    transition: all 0.4s ease-in-out;
+    transform: scale(1);
+}
+
+/* Al hacer hover el círculo se vuelve sólido y crece un poco */
+.footer-redes a:hover {
+    background-color: var(--color-calido);
+    transform: scale(1.2);
+}
+
+/* El ícono SVG dentro del círculo */
+.footer-redes img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    filter: brightness(0.8);
+}
+
+.footer-redes a:hover img {
+    filter: brightness(2);
+}
+
+/* Texto de derechos reservados en gris pequeño */
+.footer-derechos {
+    font-size: 12px;
+    color: var(--color-texto-gris);
+}
+
+
+/* BLOG */
+
+.blog-container {
+    padding-top: 20px;
+}
+
+
+/* TÉRMINOS Y CONDICIONES */
+
+/* Tarjeta blanca centrada con sombra suave */
+.tyc-terminos {
+    background-color: var(--color-fondo-tarjeta);
+    border: 1px solid var(--color-borde);
+    border-radius: 24px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+    padding: 42px 44px;
+}
+
+.tyc-terminos h1 {
+    font-size: 42px;
+    color: var(--color-texto-oscuro);
+    margin-bottom: 20px;
+}
+
+.tyc-terminos h2 {
+    font-size: 26px;
+    color: var(--color-texto-oscuro);
+    margin-top: 32px;
+    margin-bottom: 16px;
+}
+
+.tyc-terminos p {
+    color: var(--color-texto-medio);
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 18px;
+}
+
+/* El enlace "Volver al inicio" dentro  de Terminos y Condiciones */
+.tyc-terminos a {
+    color: var(--color-calido);
+    font-weight: 600;
+}
+
+.tyc-terminos a:hover {
+    text-decoration: underline;
+}
+
+
+/* BANNERS */
+
+/* Banner a pantalla completa con imagen y overlay oscuro */
+.hero-banner {
+    position: relative;
+    min-height: 55vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background-image: linear-gradient(
+        to right,
+        rgba(33, 33, 41, 0.82) 40%,
+        rgba(33, 33, 41, 0.50) 100%
+    ), url('../img/background.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+/* Contenido centrado del banner de página interna */
+.page-banner-content {
+    text-align: center;
+    z-index: 1;
+    padding: 160px 40px 80px;
+}
+
+.tyc-pagina main {
+    padding-top: 150px;
+}
+
+/* Fondos específicos para cada página interna */
+.hero-banner-blog {
+    background-image: linear-gradient(
+        to right,
+        rgba(33, 33, 41, 0.82) 40%,
+        rgba(33, 33, 41, 0.50) 100%
+    ), url('../img/Background_pages/background_blog.jpg');
+}
+
+.hero-banner-nosotros {
+    background-image: linear-gradient(
+        to right,
+        rgba(33, 33, 41, 0.82) 40%,
+        rgba(33, 33, 41, 0.50) 100%
+    ), url('../img/Background_pages/background_nosotros.jpg');
+}
+
+.hero-banner-servicios {
+    background-image: linear-gradient(
+        to right,
+        rgba(33, 33, 41, 0.82) 40%,
+        rgba(33, 33, 41, 0.50) 100%
+    ), url('../img/Background_pages/background_servicios.jpg');
+}
+
+.hero-banner-contacto {
+    background-image: linear-gradient(
+        to right,
+        rgba(33, 33, 41, 0.82) 40%,
+        rgba(33, 33, 41, 0.50) 100%
+    ), url('../img/Background_pages/background_contacto.jpg');
+}
+
+/* Título de la página interna en blanco y grande */
+.page-banner-content h2 {
+    font-size: 58px;
+    font-weight: 700;
+    color: var(--color-texto-claro);
+    margin-bottom: 14px;
+}
+
+/* Subtítulo debajo del título de la página */
+.page-banner-content p {
+    font-size: 17px;
+    color: var(--color-texto-claro);
+}
+
+
+/* ANIMACIONES */
+
+/* Todas las tarjetas comparten la misma transición suave */
+.tarjeta-modalidad,
+.tarjeta-vision,
+.tarjeta-atleta,
+.tarjeta-estadistica {
+    transition: all 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+}
+
+/* Al pasar el mouse la tarjeta se levanta y rota sutilmente */
+.tarjeta-modalidad:hover,
+.tarjeta-vision:hover,
+.tarjeta-atleta:hover,
+.tarjeta-estadistica:hover {
+    transform: perspective(700px) rotateY(5deg) translateY(-8px);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+}
+
+/* El logo flota suavemente */
+.logo img {
+    animation: floating 3s ease-in-out infinite;
+}
+
+/* Enlaces del menú principal */
+nav.nav-principal a {
+    transition: all 0.4s ease-in-out;
+    border-radius: 20px;
+    padding: 5px 15px;
+    border: 1px solid transparent;
+    background-color: transparent;
+}
+
+nav.nav-principal a:hover,
+nav.nav-principal a.nav-menu-link-active {
+    border-color: var(--color-calido);
+    background-color: rgba(255, 83, 81, 0.1);
+    color: var(--color-texto-oscuro);
+}
+
+
+/* Botón flotante para volver al inicio */
+
+.scroll-up {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 45px;
+    height: 45px;
+    text-align: center;
+    line-height: 45px;
+    background-color: var(--color-calido);
+    color: var(--color-texto-claro);
+    border: 1px solid var(--color-texto-claro);
+    border-radius: 4px;
+    font-size: 1.2rem;
+    z-index: 999;
+    transition: all 0.4s ease-in-out;
+}
+
+.scroll-up:hover {
+    background-color: var(--color-calido-oscuro);
+}
+
+
+/* Los íconos de Font Awesome del topbar-social heredan el color blanco */
+.topbar-social a {
+    color: var(--color-texto-claro);
+    font-size: 15px;
+    transition: color 0.3s;
+}
+.topbar-social a:hover {
+    color: var(--color-calido);
+}
+
+
+/* Menú hamburguesa: el botón se muestra solo en pantallas pequeñas.
+   El scripts.js agrega/quita la clase "activo" al hacer clic. */
+
+/* En pantalla grande el botón hamburguesa está oculto */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+}
+
+/* Las tres rayitas del botón hamburguesa */
+.menu-toggle span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: var(--color-texto-oscuro);
+    border-radius: 999px;
+    transition: all 0.3s ease;
+}
+
+/* Cuando el menú está abierto, la rayita del medio desaparece */
+.menu-toggle.activo span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+}
+
+/* La primera rayita rota hacia abajo para formar una X */
+.menu-toggle.activo span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+/* La tercera rayita rota hacia arriba para completar la X */
+.menu-toggle.activo span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+
+/* Scroll-up: el botón solo se ve cuando el usuario baja.
+   JS agrega la clase "visible" al hacer scroll hacia abajo. */
+
+/* Por defecto el botón está oculto e invisible */
+.scroll-up {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-calido);
+    color: var(--color-texto-claro);
+    border-radius: 6px;
+    font-size: 1.1rem;
+    z-index: 999;
+    /* Empieza invisible y fuera del flujo de clics */
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease, background-color 0.3s ease;
+}
+
+/* Cuando JS agrega "visible", el botón aparece y se puede clickear */
+.scroll-up.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.scroll-up:hover {
+    background-color: var(--color-calido-oscuro);
+}
+
+
+/* Calculadora de categoría deportiva */
+
+/* El wrapper agrupa el formulario y el resultado en fila */
+.calculadora-wrapper {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+    margin-bottom: 48px;
+}
+
+/* El formulario ocupa la mitad izquierda */
+.calculadora-form {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Cada campo del formulario: label arriba, input abajo */
+.grupo-calc {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+/* Labels en blanco porque el fondo es oscuro */
+.grupo-calc label {
+    font-family: var(--fuente-titulos);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-texto-claro);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Inputs y select con fondo semitransparente sobre el fondo oscuro */
+.grupo-calc input,
+.grupo-calc select {
+    padding: 12px 14px;
+    border: 1px solid var(--color-borde-oscuro);
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.08);
+    color: var(--color-texto-claro);
+    font-family: var(--fuente-cuerpo);
+    font-size: 15px;
+}
+
+/* El placeholder en gris claro para contrastar con el fondo oscuro */
+.grupo-calc input::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+/* Las opciones del select necesitan fondo oscuro para que se lean bien */
+.grupo-calc select option {
+    background-color: var(--color-fondo-oscuro);
+    color: var(--color-texto-claro);
+}
+
+/* Los mensajes de error debajo de cada campo */
+.error-campo {
+    font-size: 12px;
+    color: #ff8080;
+    min-height: 16px;
+}
+
+/* El mensaje de error general aparece arriba del botón */
+.error-general {
+    font-size: 13px;
+    color: #ff8080;
+    font-weight: 600;
+}
+
+/* Botón de calcular en rojo */
+.boton-calcular {
+    padding: 14px 24px;
+    background-color: var(--color-calido);
+    color: var(--color-texto-claro);
+    border: none;
+    border-radius: 8px;
+    font-family: var(--fuente-titulos);
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.boton-calcular:hover {
+    background-color: var(--color-calido-oscuro);
+    box-shadow: 0 4px 14px rgba(255, 83, 81, 0.4);
+}
+
+/* El div donde aparece el resultado, empieza vacío */
+.calculadora-resultado {
+    flex: 1;
+    min-height: 180px;
+    border-radius: 16px;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Estado: cuando el resultado es exitoso */
+.resultado-exito {
+    background-color: rgba(255, 255, 255, 0.06);
+    border: 1px solid var(--color-borde-oscuro);
+}
+
+/* Nombre del atleta en el resultado: grande y en blanco */
+.resultado-atleta {
+    font-family: var(--fuente-titulos);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--color-texto-claro);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.resultado-atleta i {
+    color: var(--color-calido);
+}
+
+/* Fila con género y edad, en gris claro */
+.resultado-datos {
+    display: flex;
+    gap: 20px;
+    font-size: 14px;
+    color: var(--color-texto-sobre-oscuro);
+}
+
+.resultado-datos span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* Pequeña etiqueta antes de los badges de categoría */
+.resultado-etiqueta {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--color-texto-gris);
+    margin-top: 4px;
+}
+
+/* Contenedor de los badges de categoría en fila */
+.resultado-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+/* Cada categoría aparece como un badge rojo */
+.badge-categoria {
+    background-color: var(--color-calido);
+    color: var(--color-texto-claro);
+    font-family: var(--fuente-titulos);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 6px 16px;
+    border-radius: 999px;
+    letter-spacing: 0.5px;
+}
+
+/* Nota al pie cuando un atleta pertenece a más de una categoría */
+.resultado-nota {
+    font-size: 12px;
+    color: var(--color-texto-gris);
+    font-style: italic;
+    margin-top: 4px;
+}
+
+
+/* MEDIA QUERIES — DISEÑO RESPONSIVE
+   480px (móvil pequeño) 
+   768px (móvil regular)
+   992px (tablet) 
+   1200px (laptop) */
+
+
+/* Laptop: pantallas hasta 1200px */
+@media (max-width: 1200px) {
+
+    /* El contenedor baja un poco de margen lateral */
+    .contenedor {
+        padding: 0 32px;
+    }
+
+    /* El banner principal reduce el tamaño del texto */
+    .banner-titulo {
+        font-size: 72px;
+    }
+
+    /* Reducimos un poco las columnas de las tarjetas de modalidades */
+    .grilla-modalidades {
+        gap: 14px;
+    }
+
+    /* La calculadora también se adapta */
+    .calculadora-wrapper {
+        gap: 28px;
+    }
+}
+
+
+/* Tablet: pantallas hasta 992px */
+@media (max-width: 992px) {
+
+    /* El título del banner baja un poco más */
+    .banner-titulo {
+        font-size: 56px;
+    }
+
+    /* Quiénes somos: pasamos a una columna */
+    .grilla-nosotros {
+        flex-direction: column;
+        gap: 32px;
+    }
+
+    /* Las modalidades pasan de 4 a 2 columnas */
+    .grilla-modalidades {
+        flex-wrap: wrap;
+    }
+
+    .grilla-modalidades .tarjeta-modalidad {
+        flex: 1 1 calc(50% - 10px);
+    }
+
+    /* El equipo también pasa a 2 columnas */
+    .grilla-equipo {
+        flex-wrap: wrap;
+    }
+
+    .grilla-equipo .tarjeta-atleta {
+        flex: 1 1 calc(50% - 10px);
+    }
+
+    /* La galería se reorganiza: una columna grande arriba, las demás abajo */
+    .galeria-flex {
+        flex-wrap: wrap;
+        height: auto;
+    }
+
+    .galeria-item--grande {
+        flex: 1 1 100%;
+        height: 300px;
+    }
+
+    .galeria-columna {
+        flex-direction: row;
+        flex: 1 1 100%;
+    }
+
+    .galeria-columna .galeria-item {
+        height: 200px;
+    }
+
+    .galeria-item--vertical {
+        flex: 1 1 100%;
+        height: 220px;
+    }
+
+    /* La calculadora pasa a una columna */
+    .calculadora-wrapper {
+        flex-direction: column;
+    }
+
+    /* Las tablas se hacen scroll horizontal si no caben */
+    .contenedor-tabla {
+        overflow-x: auto;
+    }
+
+    /* El footer se centra */
+    .contenedor-footer {
+        text-align: center;
+    }
+}
+
+
+/* Móvil regular: pantallas hasta 768px */
+@media (max-width: 768px) {
+
+    /* A partir de aquí el menú hamburguesa toma el control */
+    .menu-toggle {
+        display: flex;
+    }
+
+    /* El menú de navegación se oculta por defecto en móvil */
+    nav.nav-principal {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: var(--color-fondo-header);
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+        padding: 0;
+        max-height: 0;
+        overflow: hidden;
+        /* Usamos max-height para la transición de apertura/cierre */
+        transition: max-height 0.35s ease, padding 0.2s;
+        border-bottom: 2px solid var(--color-borde);
+        z-index: 50;
+    }
+
+    /* Cuando JS agrega la clase "activo", el menú se despliega suavemente */
+    nav.nav-principal.activo {
+        max-height: 400px;
+        padding: 12px 0 16px;
+    }
+
+    /* Cada enlace del menú ocupa todo el ancho en móvil */
+    nav.nav-principal a {
+        width: 100%;
+        text-align: center;
+        padding: 12px 20px;
+        border-radius: 0;
+        font-size: 14px;
+    }
+
+    /* El contenedor del header tiene position relativa para el menú desplegable */
+    .contenedor-header {
+        position: relative;
+        flex-wrap: wrap;
+        padding: 12px 20px;
+    }
+
+    /* El banner baja más el texto para no chocar con el header */
+    .banner-contenido {
+        padding: 120px 24px 80px;
+    }
+
+    .banner-titulo {
+        font-size: 42px;
+    }
+
+    .banner-descripcion {
+        font-size: 15px;
+    }
+
+    /* Las secciones reducen su padding vertical */
+    .seccion {
+        padding: 60px 0;
+    }
+
+    /* Los títulos de sección se hacen más pequeños */
+    .seccion h2 {
+        font-size: 34px;
+    }
+
+    /* Visión: las dos tarjetas se apilan */
+    .grilla-vision {
+        flex-direction: column;
+    }
+
+    /* Las estadísticas siguen en 2x2 pero más compactas */
+    .grilla-estadisticas {
+        gap: 10px;
+    }
+
+    /* El formulario de contacto ocupa todo el ancho */
+    .formulario-contacto {
+        max-width: 100%;
+    }
+
+    /* El topbar se apila en columna y reduce padding */
+    .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px 20px;
+        gap: 8px;
+        font-size: 12px;
+    }
+
+    /* El resultado de la calculadora ocupa todo el ancho */
+    .calculadora-resultado {
+        min-height: auto;
+    }
+
+    /* El subtítulo de las tablas reduce su tamaño */
+    .tabla-subtitulo {
+        font-size: 15px;
+    }
+
+    /* El botón de scroll-up queda más cerca del borde */
+    .scroll-up {
+        bottom: 20px;
+        right: 20px;
+    }
+}
+
+
+/* Móvil pequeño: pantallas hasta 480px */
+@media (max-width: 480px) {
+
+    /* En pantallas muy pequeñas el subtítulo del logo desaparece */
+    .logo-subtitulo {
+        display: none;
+    }
+
+    /* El título del banner se hace aún más compacto */
+    .banner-titulo {
+        font-size: 34px;
+    }
+
+    /* Las estadísticas pasan a una sola columna */
+    .grilla-estadisticas {
+        flex-direction: column;
+    }
+
+    .tarjeta-estadistica {
+        flex: 1 1 100%;
+    }
+
+    /* El equipo también pasa a una sola columna */
+    .grilla-equipo {
+        flex-direction: column;
+    }
+
+    .grilla-equipo .tarjeta-atleta {
+        flex: 1 1 100%;
+    }
+
+    /* Las modalidades también en una sola columna */
+    .grilla-modalidades {
+        flex-direction: column;
+    }
+
+    .grilla-modalidades .tarjeta-modalidad {
+        flex: 1 1 100%;
+    }
+
+    /* El contenedor reduce aún más el padding lateral */
+    .contenedor {
+        padding: 0 16px;
+    }
+
+    /* El video ocupa todo el ancho */
+    .contenedor-video {
+        max-width: 100%;
+    }
+
+    /* Los badges de categoría se hacen un poco más pequeños */
+    .badge-categoria {
+        font-size: 12px;
+        padding: 5px 12px;
+    }
+
+    /* El botón de calcular ocupa todo el ancho en móviles muy pequeños */
+    .boton-calcular {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* El footer reduce su padding */
+    .contenedor-footer {
+        padding: 0 16px;
+    }
+}

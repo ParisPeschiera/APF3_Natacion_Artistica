@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Icono que aparece en la pestaña del navegador -->
+    <link rel="icon" href="../img/logo_fdnda.ico" type="image/x-icon">
+
+    <!-- Título de la pestaña -->
+    <title>Blog — FDNDA</title>
+
+    <!-- Fuentes de Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Librería de íconos Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Hoja de estilos compartida -->
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+
+<body>
+
+    <!-- Encabezado -->
+    <header id="header">
+        <!-- Teléfono, correo y redes sociales -->
+        <div class="topbar">
+            <div class="topbar-contact">
+                <a target="_blank" href="tel:+51941632535">
+                    <i class="fa-solid fa-phone"></i>
+                    (+51) 941 632 535
+                </a>
+                <a target="_blank" href="mailto:ticketing@fdnda.org">
+                    <i class="fa-regular fa-envelope"></i>
+                    ticketing@fdnda.org
+                </a>
+            </div>
+            <div class="topbar-social">
+                <a href="https://www.facebook.com/FDNDeportesAcuaticos" target="_blank" rel="noopener noreferrer" title="Facebook">
+                    <i class="fa-brands fa-facebook"></i>
+                </a>
+                <a href="https://www.instagram.com/fdndadescentralizadonatacion/" target="_blank" rel="noopener noreferrer" title="Instagram">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a href="https://www.linkedin.com/company/fdpn-federación-deportiva-peruana-de-natación/" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+                    <i class="fa-brands fa-linkedin"></i>
+                </a>
+                <a href="https://www.youtube.com/@DeportesAcuáticosPerú" target="_blank" rel="noopener noreferrer" title="YouTube">
+                    <i class="fa-brands fa-youtube"></i>
+                </a>
+            </div>
+        </div>
+        <!-- Barra de navegación con logo y menú -->
+        <div class="contenedor-header">
+            <!-- Logo enlazado a la página principal -->
+            <a href="../../index.html" class="logo">
+                <img src="../img/logo_fdnda.png" alt="Logo FDNDA">
+                <div class="logo-texto">
+                    <span class="logo-nombre">FDNDA</span>
+                    <span class="logo-subtitulo">Federación Deportiva Nacional de Deportes Acuáticos</span>
+                </div>
+            </a>
+            <!-- Botón hamburguesa -->
+            <button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <!-- Menú de navegación -->
+            <nav class="nav-principal">
+                <a class="nav-menu-link" href="../../index.html">Inicio</a>
+                <a class="nav-menu-link" href="nosotros.html">Nosotros</a>
+                <a class="nav-menu-link" href="servicios.html">Servicios</a>
+                <a class="nav-menu-link nav-menu-link-active" href="blog.html">Blog</a>
+                <a class="nav-menu-link" href="contacto.html">Contacto</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Banner de la página con imagen de fondo y título -->
+    <section class="hero-banner hero-banner-blog">
+        <div class="page-banner-content">
+            <h2>Blog</h2>
+            <p>Noticias, artículos y todo sobre Natación Artística.</p>
+        </div>
+    </section>
+
+    <!-- Video de YouTube sobre natación artística -->
+    <section class="seccion seccion">
+        <div class="contenedor">
+            <h2>Video Destacado</h2>
+            <p class="seccion-intro">Descubre el esfuerzo, la disciplina y la dedicación que impulsan 
+                al equipo peruano de natación artística en cada entrenamiento y competencia. A través 
+                de este video, conoce más sobre las atletas que representan al Perú, su preparación 
+                constante y la pasión que las motiva a seguir creciendo dentro y fuera de la piscina.</p>
+            <!-- URL de YouTube -->
+            <div class="contenedor-video">
+                <iframe
+                    class="video-fluid"
+                    src="https://www.youtube.com/embed/0U7lmVq-0qY"
+                    title="Videoblog de Natación Artística"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+    </section>  
+
+    <!-- Pie de página -->
+    <footer id="contacto">
+        <div class="contenedor-footer">
+            <div class="footer-marca">
+                <img src="../img/logo_fdnda.png" alt="Logo FDNDA">
+                <span>Federación Deportiva Nacional de Deportes Acuáticos</span>
+            </div>
+            <div class="footer-sede">
+                <p class="footer-sede-titulo">Sede Principal</p>
+                <p>Lima, Perú</p>
+                <p>Campo de Marte — Jirón Nazca 6, Jesús María</p>
+                <p>ticketing@fdnda.org &nbsp;|&nbsp; (+51) 941 632 535</p>
+            </div>
+            <div class="footer-redes">
+                <a href="https://www.facebook.com/FDNDeportesAcuaticos" target="_blank" rel="noopener noreferrer" title="Facebook">
+                    <img src="../img/facebook.svg" alt="Facebook">
+                </a>
+                <a href="https://www.instagram.com/fdndadescentralizadonatacion/" target="_blank" rel="noopener noreferrer" title="Instagram">
+                    <img src="../img/instagram.svg" alt="Instagram">
+                </a>
+                <a href="https://www.linkedin.com/company/fdpn-federación-deportiva-peruana-de-natación/" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+                    <img src="../img/linkedin.svg" alt="LinkedIn">
+                </a>
+                <a href="https://www.youtube.com/@DeportesAcuáticosPerú" target="_blank" rel="noopener noreferrer" title="YouTube">
+                    <img src="../img/whatsapp.svg" alt="YouTube">
+                </a>
+            </div>
+            <div class="footer-derechos">
+                &copy; 2026 Federación Deportiva Nacional de Deportes Acuáticos — Todos los derechos reservados
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botón para volver al inicio de la página -->
+    <a href="#" class="scroll-up">
+        <i class="fa-solid fa-angle-up"></i>
+    </a>
+
+    <!-- JavaScript: menú hamburguesa, scroll-up y calculadora -->
+    <script src="../js/scripts.js"></script>
+
+</body>
+</html>
